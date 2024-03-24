@@ -16,9 +16,6 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
 
-
-
-
 def get_pdf_text(pdf_docs):
     text=""
     for pdf in pdf_docs:
@@ -40,7 +37,7 @@ def get_vector_store(text_chunks):
     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
     vector_store.save_local("faiss_index")
 
-
+'''
 def get_conversational_chain():
 
     prompt_template = """
@@ -58,7 +55,36 @@ def get_conversational_chain():
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
 
     return chain
+'''
+def get_conversational_chain():
 
+    prompt_template = """
+    As a highly knowledgeable legal assistant, you're tasked with analyzing the given legal context and providing a comprehensive and precise answer to the question based on the information provided and relevant legal principles.
+    It's crucial to apply your extensive understanding of the law, ensuring your response is informative, directly relevant, and meticulously detailed. If the answer requires, include any potential legal precedents,
+    statutes, or principles that apply, distinguishing between different jurisdictions if necessary. Aim to offer a balanced view that considers multiple perspectives and potential counterarguments, highlighting any areas of ambiguity or ongoing debate within the legal community.
+    Avoid assumptions and ensure that your response remains neutral and objective.
+
+    Legal Context:\n{context}\n
+    Question:\n{question}\n
+    Answer:
+    """
+
+    safety_settings = {
+        "safety": {
+            "minimize_harm": True,  # Enables harm minimization
+            "safety_level": "zero",  # Set safety level to zero
+            # Further customization can be added here
+        }
+    }
+
+    model = ChatGoogleGenerativeAI(model="gemini-pro",
+                                   temperature=0.3,
+                                   **safety_settings)  # Pass the safety settings to the model
+
+    prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
+    chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
+
+    return chain
 
 
 def user_input(user_question):
