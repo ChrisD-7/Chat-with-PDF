@@ -1,0 +1,13 @@
+prefix=C:/Users/chris/OneDrive/Desktop/Chat-with-PDF-/chat/Library
+exec_prefix=C:/Users/chris/OneDrive/Desktop/Chat-with-PDF-/chat/Library
+libdir=C:/Users/chris/OneDrive/Desktop/Chat-with-PDF-/chat/Library/lib
+sharedlibdir=C:/Users/chris/OneDrive/Desktop/Chat-with-PDF-/chat/Library/lib
+includedir=C:/Users/chris/OneDrive/Desktop/Chat-with-PDF-/chat/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
