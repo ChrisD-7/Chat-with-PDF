@@ -1,6 +1,6 @@
 import streamlit as st
-from PyPDF import PdfReader
-from langchain.text_splitter import RecursiveTextSplitter
+from PyPDF2 import PdfReader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
 
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-genai.congifure_api_key(os.getenv("GENAI_API_KEY"))
+genai.configure(api_key=os.getenv("GENAI_API_KEY"))
 
 
 #REad PDF go through pages and extract text.
