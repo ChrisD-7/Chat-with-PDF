@@ -16,6 +16,9 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
 
+
+
+
 def get_pdf_text(pdf_docs):
     text=""
     for pdf in pdf_docs:
@@ -41,7 +44,8 @@ def get_vector_store(text_chunks):
 def get_conversational_chain():
 
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details,  don't provide the wrong answer\n\n
+    Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
+    provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
@@ -55,7 +59,6 @@ def get_conversational_chain():
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
 
     return chain
-
 
 
 def user_input(user_question):
@@ -78,25 +81,28 @@ def user_input(user_question):
 
 
 def main():
-    st.set_page_config("Chat with PDF")
-    st.header("Chat with PDF using GEMINI")
+    st.set_page_config("Chat PDF")
+    st.header("Chat with PDF using Gemini:")
 
-    user_question = st.text_input("Ask a Question the PDF Files")
+    # Initialize chat history list
+    chat_history = []
 
-    if user_question:
-        user_input(user_question)
+    user_question = st.text_input("You:", key="user_input")
+    if st.button("Send", key="send_button") and user_question:
+        chat_history.append(("You:", user_question))
+        response = user_input(user_question)
+        chat_history.append(("Bot:", response))
 
-    with st.sidebar:
-        st.title("Menu:")
-        pdf_docs = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
-        if st.button("Submit & Process"):
-            with st.spinner("Processing..."):
-                raw_text = get_pdf_text(pdf_docs)
-                text_chunks = get_text_chunks(raw_text)
-                get_vector_store(text_chunks)
-                st.success("Done")
-
+    st.sidebar.title("Menu:")
+    pdf_docs = st.sidebar.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
+    if st.sidebar.button("Submit & Process"):
+        with st.spinner("Processing..."):
+            raw_text = get_pdf_text(pdf_docs)
+            text_chunks = get_text_chunks(raw_text)
+            get_vector_store(text_chunks)
+            st.success("Done")
 
 
 if __name__ == "__main__":
     main()
+
