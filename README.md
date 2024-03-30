@@ -1,85 +1,40 @@
-Certainly! Here's how you can incorporate the reference to the video and mention the vector database in your README, along with a note about your GitHub profile:
+# Chat-with-PDF App README
 
-```markdown
-# ChatGPT PDF Chatbot
-
-ChatGPT PDF Chatbot is an innovative Streamlit application designed to make interacting with PDF documents as natural as having a conversation. This tool extracts text from PDFs and leverages a powerful vector database for context-aware conversations using natural language processing.
+## Overview
+Hey there! I'm thrilled to share with you the "Chat-with-PDF" app - a cool project I've been working on to learn about the Gemini API, dive into vector databases using FAISS, and get an intro to Large Language Models (LLMs). Inspired by Krish Naik's video on Langchain and Google Gemini Pro, this app allows you to chat and fetch information from multiple PDFs at once!
 
 ## Features
+- Chat interface to interact with the content of your PDF documents.
+- PDF text extraction for chat context.
+- FAISS vector database for efficient similarity search.
+- Integration with Google's Gemini API for understanding and responding to queries.
 
-- **PDF Text Extraction**: Upload PDF documents to extract text for analysis.
-- **Conversational Interface**: Chat with the application to ask questions and receive answers from the PDF contents.
-- **Vector Database**: Utilizes a vector database (FAISS) for efficient retrieval of contextually relevant information.
-- **Continuous Interaction**: Allows for an ongoing conversation, maintaining context across inquiries.
-- **User-Friendly Design**: Aesthetic and responsive interface to enhance user experience.
+## Motivation
+The drive to learn and explore new technologies led me to this project. Understanding how the Gemini API can power up an app and how vector databases enhance search functionalities was an exciting challenge. Moreover, learning about LLMs and their application in real-world projects was an amazing experience.
 
-## Getting Started
+## How to Run the App
+1. Clone the repository.
+2. Install the required packages from `requirements.txt` using `pip install -r requirements.txt`.
+3. Set up your environment variables in a `.env` file with your Google API key as `GOOGLE_API_KEY`.
+4. Run `streamlit run app.py` in your terminal.
+5. Upload your PDFs and start chatting!
 
-Follow these instructions to set up the project locally.
+## Dependencies
+- Streamlit
+- Google Generative AI
+- python-dotenv
+- Langchain
+- PyPDF2
+- ChromaDB
+- FAISS (CPU)
+- Langchain Google GenAI
 
-### Prerequisites
+Check `requirements.txt` for the specific versions.
 
-Before you begin, ensure you have met the following requirements:
+## Contributions
+Feel free to fork, suggest improvements, or contribute to this enthusiastic learning journey. Every bit of help or suggestion is celebrated!
 
-- Python 3.6 or higher
-- Active internet connection
-- Required API keys for external services (e.g., OpenAI API key)
+## Credits
+A huge shoutout to [Krish Naik](https://github.com/krishnaik06) for the amazing tutorial. Your content is an inspiration and a fantastic learning resource!
 
-### Installation
-
-Clone the repository and navigate into it:
-
-```sh
-git clone https://github.com/ChrisD-7/chatgpt-pdf-chatbot.git
-cd chatgpt-pdf-chatbot
-```
-
-Install dependencies:
-
-```sh
-pip install -r requirements.txt
-```
-
-### Running the Application
-
-Execute the Streamlit app:
-
-```sh
-streamlit run app.py
-```
-
-Visit `http://localhost:8501` in your web browser.
-
-## Built With
-
-- [Streamlit](https://www.streamlit.io/) - The framework for turning data scripts into shareable web apps.
-- [FAISS](https://github.com/facebookresearch/faiss) - A library for efficient similarity search and clustering of dense vectors.
-- [PyPDF2](https://pypdf2.readthedocs.io/en/latest/) - A PDF file reading library.
-- [LangChain](https://github.com/LangChain/langchain) - Your toolkit for building language model applications.
-
-## Acknowledgements
-
-This project was inspired by the tutorial from [TensorWork's YouTube video on building a ChatGPT with PDFs](https://youtu.be/uus5eLz6smA?feature=shared).
-
-## Contributing
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for how to make contributions. We welcome your ideas and collaboration.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For available versions, see the [tags on this repository](https://github.com/ChrisD-7/chatgpt-pdf-chatbot/tags).
-
-## Author
-
-- **Chris D** - *Initial Creator* - [ChrisD-7](https://github.com/ChrisD-7)
-
-Check out also the list of [contributors](https://github.com/ChrisD-7/chatgpt-pdf-chatbot/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Make sure to create the `CONTRIBUTING.md` and `LICENSE` files in your repository if they do not already exist, and provide the actual content for them. The `LICENSE` file should contain the full text of the license under which your project is released. If you are using the MIT License, you can find the standard text for this license online. The `CONTRIBUTING.md` file should contain instructions for how others can contribute to your project.
-
-Additionally, you may want to check that all links are correct, especially those pointing to your GitHub repository and the contributors' page.
+Keep exploring! 🚀📚
